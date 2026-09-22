@@ -1,0 +1,80 @@
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* ล็อกความสูงหน้าจอหลัก */
+        body { 
+            font-family: 'Prompt', sans-serif; 
+            background: #f4f7fb; 
+            color: #334155; 
+            display: flex; 
+            height: 100vh; 
+            overflow: hidden; 
+        }
+        
+        /* ---------------- Sidebar (จัดระเบียบให้ล็อกนิ่งและซ่อน Scrollbar ส่วนเกิน) ---------------- */
+        .sidebar { 
+            width: 260px; 
+            background: #111827; 
+            color: #94a3b8; 
+            display: flex; 
+            flex-direction: column; 
+            flex-shrink: 0; 
+            height: 100vh; 
+            overflow-y: auto; 
+            scrollbar-width: none; /* สำหรับ Firefox */
+        }
+        .sidebar::-webkit-scrollbar {
+            display: none; /* สำหรับ Chrome, Safari, Opera */
+        }
+
+        .brand { padding: 25px 20px; display: flex; align-items: center; gap: 15px; color: white; font-weight: 600; font-size: 16px; }
+        .brand .logo-icon { background: #3b82f6; width: 35px; height: 35px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .brand span { font-size: 12px; color: #94a3b8; font-weight: 400; }
+        
+        .menu-label { padding: 8px 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; color: #64748b; }
+        .menu { display: flex; flex-direction: column; gap: 3px; padding: 0 12px; }
+        .menu a { color: #94a3b8; text-decoration: none; padding: 10px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px; transition: all 0.2s; font-size: 14px; }
+        .menu a:hover { color: white; background: rgba(255, 255, 255, 0.05); }
+        .menu a.active { background: #3b82f6; color: white; font-weight: 500; }
+        
+        .sidebar-bottom { margin-top: auto; padding: 15px 12px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .user-profile { background: #1e293b; padding: 12px; border-radius: 10px; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: white; }
+        .avatar { width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+        .user-info { overflow: hidden; }
+        .user-info h4 { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-info p { font-size: 11px; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .logout-btn { width: 100%; background: transparent; border: none; color: #94a3b8; text-align: left; padding: 8px 12px; cursor: pointer; font-family: 'Prompt'; font-size: 13px; border-radius: 6px; }
+        .logout-btn:hover { color: white; background: rgba(255, 255, 255, 0.05); }
+
+        /* ---------------- Main Content (พื้นที่ขวาเลื่อนได้อิสระ) ---------------- */
+        .main-content { flex: 1; padding: 40px; height: 100vh; overflow-y: auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+        .header h1 { color: #0f172a; font-size: 24px; font-weight: 600; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        
+        .search-box { display: flex; align-items: center; background: white; border: 1px solid #cbd5e1; border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .search-box input { border: none; outline: none; padding: 8px; font-family: 'Prompt'; font-size: 14px; width: 220px; background: transparent; color: #1e293b; }
+        .search-box button { background: transparent; border: none; cursor: pointer; font-size: 16px; color: #64748b; }
+
+        .btn-add { background: #3b82f6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2); }
+        .btn-add:hover { background: #2563eb; }
+
+        .action-buttons { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+        .btn-edit { background: #f1f5f9; color: #0284c7; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0; }
+        .btn-edit:hover { background: #e0f2fe; }
+        .btn-delete { background: #fef2f2; color: #ef4444; padding: 6px 12px; border-radius: 6px; border: 1px solid #fca5a5; font-size: 13px; font-weight: 500; font-family: 'Prompt'; cursor: pointer; }
+        .btn-delete:hover { background: #fee2e2; }
+
+        /* แถบแจ้งเตือนสินค้าใกล้หมด */
+        .alert-warning { background: #fefce8; color: #854d0e; padding: 14px 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #eab308; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .alert-success { background: #f0fdf4; color: #166534; padding: 14px 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #22c55e; font-size: 14px; }
+        
+        /* ป้ายเตือนสถานะสินค้าใกล้หมดในตาราง */
+        .badge-low-stock { background: #fef2f2; color: #dc2626; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; border: 1px solid #fca5a5; display: inline-block; margin-left: 6px; }
+
+        .card { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid #edf2f7; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th { background: #f8fafc; color: #64748b; font-weight: 500; font-size: 13px; text-align: left; padding: 16px 25px; border-bottom: 1px solid #e2e8f0; }
+        td { padding: 16px 25px; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155; vertical-align: middle; }
+        tr:hover td { background-color: #f8fafc; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; }

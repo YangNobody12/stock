@@ -1,0 +1,56 @@
+databases:
+  - name: stock-system-db
+    plan: free
+    region: singapore
+    databaseName: stock_system
+    user: stock_user
+
+services:
+  - type: web
+    name: stock-system
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: APP_NAME
+        value: Stock System
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: stock-system-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: stock-system-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: stock-system-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: stock-system-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: stock-system-db
+          property: password
+      - key: DB_SCHEMA
+        value: public
+      - key: DB_SSLMODE
+        value: prefer
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: CACHE_STORE
+        value: database

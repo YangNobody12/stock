@@ -1,0 +1,12 @@
+.git
+.github
+.env
+.env.backup
+.env.production
+node_modules
+vendor
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+tests

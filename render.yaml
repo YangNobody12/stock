@@ -24,6 +24,8 @@ services:
         value: base64:Sx4JqWIHCymWVlKXhNKywYdgoH5O4d8Lqc5qBu5SWBg=
       - key: LOG_CHANNEL
         value: stderr
+      - key: APP_URL
+        value: https://stock-system-hasb.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST

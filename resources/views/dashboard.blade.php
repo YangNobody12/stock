@@ -121,8 +121,8 @@
                 $barLabels = $topProducts->pluck('name')->toJson();
                 $barData = $topProducts->pluck('quantity')->toJson();
 
-                $categoryStats = \App\Models\Category::withCount('products')
-                                    ->having('products_count', '>', 0)
+                $categoryStats = \App\Models\Category::has('products')
+                                    ->withCount('products')
                                     ->get();
                 $donutLabels = $categoryStats->pluck('name')->toJson();
                 $donutData = $categoryStats->pluck('products_count')->toJson();
